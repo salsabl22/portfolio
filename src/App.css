@@ -1,0 +1,122 @@
+@import "tailwindcss";  /* Jika ini tidak bekerja, ganti dengan @tailwind base; @tailwind components; @tailwind utilities; di file utama Tailwind Anda */
+
+#root {
+  max-width: 1280px;
+  text-align: center;
+}
+
+/* Custom Glow Effect for Text */
+.glow-text {
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3), 0 0 30px rgba(236, 72, 153, 0.2);
+}
+
+/* Glow Effect for Active Nav Items */
+.glow-effect {
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.8), 0 0 16px rgba(236, 72, 153, 0.6);
+}
+
+/* Fade In Animation - Diubah agar langsung tanpa delay putih */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi scroll untuk section - Gunakan transition di App.jsx untuk langsung */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes experience-train {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-experience-train {
+  animation: experience-train 30s linear infinite;
+}
+
+/* ===== MOBILE: MATI TOTAL ===== */
+@media (max-width: 768px) {
+  .animate-experience-train {
+    animation: none;
+    transform: none;
+  }
+
+  /* 🔴 INI FIX UTAMANYA */
+  [style*="mask-image"],
+  [class*="mask-image"] {
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+  }
+}
+
+.section-visible {
+  animation: fadeInUp 1s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1s ease-in-out; /* Tetap ada jika perlu, tapi App.jsx menggunakan transition */
+}
+
+.animate-fadeInDelay {
+  animation: fadeIn 1s ease-in-out 0.2s both;
+}
+
+.animate-fadeInDelay2 {
+  animation: fadeIn 1s ease-in-out 0.4s both;
+}
+
+/* Tambahkan class baru untuk animasi fade-in saat scroll */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Additional Hover Effects for Cards */
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Jika ingin gunakan Scroll-Driven Animations (hanya untuk browser yang mendukung) */
+.block {
+  animation: appear linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+/* Ensure Body Background is Dark - Tambahkan ini untuk hindari putih */
+body {
+  background-color: #000000; /* black */
+  color: #ffffff; /* white */
+  margin: 0;
+  padding: 0;
+}
+
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.light .glow-text {
+  text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
+}
+
+.light .glow-effect {
+  text-shadow: 0 0 8px rgba(236, 72, 153, 0.8);
+}
